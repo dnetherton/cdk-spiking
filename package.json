@@ -11,6 +11,7 @@
     "deploy:code": "./scripts/deploy-code.sh",
     "prestart": "./scripts/build.sh",
     "start": "SAM_LOCAL=true cdk synth > .template.yaml && sam local start-api -t .template.yaml",
+    "postinstall": "./scripts/postinstall.sh",
     "test": "tsc",
     "test:watch": "tsc -w",
     "cdk": "cdk"

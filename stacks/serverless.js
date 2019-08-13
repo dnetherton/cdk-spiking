@@ -17,6 +17,10 @@ export class ServerlessStack extends cdk.Stack {
   constructor(scope, id, props) {
     super(scope, id, props)
 
+/*Globals:
+  Api:
+    OpenApiVersion: '2.0'
+*/
     const helloWorld = new sam.CfnFunction(this, "HelloWorldFunction", {
       codeUri: isPackaged ? `s3://deans-spike/hello-world-${buildNumber}.zip` : 'handlers/hello-world/builds',
       handler: "index.handler",
@@ -39,6 +43,25 @@ export class ServerlessStack extends cdk.Stack {
 
     new cdk.CfnOutput(this, 'HelloWorldApi', {
       value: cdk.Fn.sub('https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello')
+    })
+
+    const goodbyeWorld = new sam.CfnFunction(this, "GoodbyeWorldFunction", {
+      codeUri: isPackaged ? `s3://deans-spike/goodbye-world-${buildNumber}.zip` : 'handlers/goodbye-world/builds',
+      handler: "index.handler",
+      runtime: Runtime.NODEJS_10_X.name,
+      events: {
+        GoodbyeWorld: {
+          type: "Api",
+          properties: {
+            path: "/goodbye",
+            method: "get"
+          }
+        }
+      }
+    })
+
+    new cdk.CfnOutput(this, 'GoodbyeWorldApi', {
+      value: cdk.Fn.sub('https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/goodbye')
     })
   }
 }

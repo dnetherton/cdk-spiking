@@ -9,3 +9,9 @@ mkdir -p ./tmp
 cd ./handlers/hello-world/builds/
 npm ci --production
 zip -qr9 ./../../../tmp/hello-world-$BUILD_NUMBER.zip ./
+cd ../../../
+
+cd ./handlers/goodbye-world/builds/
+npm ci --production
+zip -qr9 ./../../../tmp/goodbye-world-$BUILD_NUMBER.zip ./
+cd ../../../
