@@ -1,11 +1,9 @@
 {
   "name": "hello-world",
   "version": "0.1.0",
-  "scripts": {
-    "package": "zip -qr9 ./../../tmp/$npm_package_name-$BUILD_NUMBER.zip ./"
-  },
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "async_iter": "^1.1.4"
+  },
+  "dependencies": {
   }
 }

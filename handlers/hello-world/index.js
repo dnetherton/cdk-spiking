@@ -1,9 +1,9 @@
-const aws = require('aws-sdk')
-const sqs = new aws.SQS()
+import aws from 'aws-sdk'
+import {map} from 'async_iter/pipeline'
 
-exports.handler = async (event) => {
-    return {
-        statusCode: 200,
-        body: 'Hello world'
-    }
+export async function handler(event) {
+  return {
+    statusCode: 200,
+    body: 'Hello world--44444'
+  }
 }
