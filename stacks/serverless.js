@@ -13,14 +13,21 @@ const isPackaged = process.env.SAM_LOCAL !== 'true'
 const buildNumber = process.env.BUILD_NUMBER ?? '0'
 const hash = process.env.HASH
 
+const stageName = 'blah'
+
 export class ServerlessStack extends cdk.Stack {
   constructor(scope, id, props) {
     super(scope, id, props)
 
-/*Globals:
-  Api:
-    OpenApiVersion: '2.0'
-*/
+    const x = new cdk.CfnInclude(this, 'Spike', {
+      template: {Globals: {Api: {OpenApiVersion: '2.0'}}}
+    })
+
+    const api = new sam.CfnApi(this, 'MyServerlessApi', {
+      stageName,
+      openApiVersion: '2.0'
+    })
+
     const helloWorld = new sam.CfnFunction(this, "HelloWorldFunction", {
       codeUri: isPackaged ? `s3://deans-spike/hello-world-${buildNumber}.zip` : 'handlers/hello-world/builds',
       handler: "index.handler",
@@ -35,14 +42,15 @@ export class ServerlessStack extends cdk.Stack {
           type: "Api",
           properties: {
             path: "/hello",
-            method: "get"
+            method: "get",
+            restApiId: api.ref
           }
         }
       }
     })
 
     new cdk.CfnOutput(this, 'HelloWorldApi', {
-      value: cdk.Fn.sub('https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello')
+      value: cdk.Fn.sub(`https://$\{MyServerlessApi}.execute-api.$\{AWS::Region}.amazonaws.com/${stageName}/hello`)
     })
 
     const goodbyeWorld = new sam.CfnFunction(this, "GoodbyeWorldFunction", {
@@ -54,14 +62,15 @@ export class ServerlessStack extends cdk.Stack {
           type: "Api",
           properties: {
             path: "/goodbye",
-            method: "get"
+            method: "get",
+            restApiId: api.ref
           }
         }
       }
     })
 
     new cdk.CfnOutput(this, 'GoodbyeWorldApi', {
-      value: cdk.Fn.sub('https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/goodbye')
+      value: cdk.Fn.sub(`https://$\{MyServerlessApi}.execute-api.$\{AWS::Region}.amazonaws.com/${stageName}/goodbye`)
     })
   }
 }
