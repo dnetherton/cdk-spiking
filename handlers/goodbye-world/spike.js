@@ -11,19 +11,21 @@ AWS.config.update({region})
 export async function main() {
 
   const db = knex({
-    client: 'mysql',
+    client: 'mysql2',
     connection: {
       host: 'localhost',
       user: 'root',
       password: 'docker',
-      database: 'blah',
-      insecureAuth : true
+      database: 'blah'
     }
   });
 
   const result = await db.raw('select 1 as blah')
 
   console.log(result)
+
+  db.destroy()
+  //console.log(db)
 }
 
 main()

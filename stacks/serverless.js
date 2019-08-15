@@ -22,7 +22,7 @@ const localDbConnection = {
   "dbname": "blah",
   "engine": "mysql",
   "port": 3306,
-  "host": "172.16.11.157",
+  "host": "mysql-docker",
   "username": "root"
 }
 

@@ -3,15 +3,6 @@ import path from 'path'
 
 export default {
   ...baseConfig(__dirname),
-
-  entry: path.join(__dirname, 'spike.js'),
-  target: 'node',
-  output: {
-    path: path.join(__dirname, 'builds'),
-    filename: 'spike.js',
-    libraryTarget: 'umd'
-  },
-
   externals: [{
     'aws-sdk': 'commonjs aws-sdk',
     bufferutil: 'commonjs bufferutil',

@@ -23,9 +23,11 @@ async function getDataConnectionDetails() {
 export async function handler(event) {
 
   try {
+    console.log('aaaa')
     const x = await getDataConnectionDetails()
 
-    console.log(JSON.stringify(x))
+    console.log('bbbb')
+
     const db = knex({
       client: 'mysql',
       connection: {
@@ -36,16 +38,18 @@ export async function handler(event) {
       }
     });
 
-    const result = await db.raw('select 1 as blah')
+    console.log('cccc')
 
-    await delay(1500)
+    const result = await db.raw('select 1 as blah;')
+
+    console.log('dddd')
+
     return {
       statusCode: 200,
       body: `Database connection: ${JSON.stringify(result)}\n`
     }
   } catch(err) {
     console.log(err.stack)
-    await delay(1500)
     return {
       statusCode: 500,
       body: err.stack
