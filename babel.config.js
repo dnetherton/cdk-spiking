@@ -4,6 +4,9 @@ module.exports = api => {
   return {
     plugins: [
       [
+        '@babel/plugin-transform-strict-mode',
+      ],
+      [
         '@babel/plugin-proposal-class-properties',
         {
           'loose': true
