@@ -44,6 +44,7 @@ export class FargateStack extends cdk.Stack {
       memoryLimitMiB: 512, // Default is 512
       publicLoadBalancer: true, // Default is false
       enableLogging: true,
+      containerPort: 3000,
       executionRole
     })
 
