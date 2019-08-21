@@ -1,27 +1,14 @@
-FROM amazonlinux as builder
-MAINTAINER Erica Windisch <erica@iopipe.com>
-ARG NODE_VERSION=8.10.0
+FROM node:8
 
-RUN yum groupinstall -yq "Development Tools"
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-# The /var/lang is where AWS installs Node.
-#ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.tar.gz /tmp/
-RUN mkdir -p /tmp; \
-    curl -vvv https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.tar.gz | \
-    tar -zxvC /tmp/
-WORKDIR /tmp/node-v${NODE_VERSION}
-RUN mkdir -p /var/lang; \
-    ./configure --prefix=/var/lang; \
-    make all install
+COPY index.js .
+COPY package.json .
+COPY package-lock.json .
 
-FROM amazonlinux
-COPY --from=builder /var/lang /var/lang
+RUN npm ci --production  --unsafe-perm
 
-RUN yum groupinstall -yq "Development Tools"
+EXPOSE 3000
 
-RUN mkdir -p /var/task
-WORKDIR /var/task
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/lang/bin
-ENTRYPOINT ["npm", "install"]
-
-#https://github.com/iopipe/awslambda-npm-install/blob/master/Dockerfile
+CMD [ "node", "index.js" ]

@@ -1,0 +1,65 @@
+{
+  "availability-zones:account=672317684965:region=ap-southeast-2": [
+    "ap-southeast-2a",
+    "ap-southeast-2b",
+    "ap-southeast-2c"
+  ],
+  "vpc-provider:account=672317684965:filter.tag:Name=VpcStack/Vpc:region=ap-southeast-2": {
+    "vpcId": "vpc-04a4b7e4dd19c3646",
+    "availabilityZones": [
+      "ap-southeast-2a",
+      "ap-southeast-2b"
+    ],
+    "privateSubnetIds": [
+      "subnet-091af47d46c534107",
+      "subnet-034938f67b3a917bc"
+    ],
+    "privateSubnetNames": [
+      "Private"
+    ],
+    "privateSubnetRouteTableIds": [
+      "rtb-032daa6308c3da40e",
+      "rtb-0d9af54ce5f4716e6"
+    ],
+    "publicSubnetIds": [
+      "subnet-0828af527c43435df",
+      "subnet-027087af9838768ef"
+    ],
+    "publicSubnetNames": [
+      "Public"
+    ],
+    "publicSubnetRouteTableIds": [
+      "rtb-03a10f7357d06dfec",
+      "rtb-02e6ea2292f681688"
+    ]
+  },
+  "vpc-provider:account=672317684965:filter.tag:Name=Vpc2Stack/Vpc2:region=ap-southeast-2": {
+    "vpcId": "vpc-0151b34f14e209032",
+    "availabilityZones": [
+      "ap-southeast-2a",
+      "ap-southeast-2b"
+    ],
+    "privateSubnetIds": [
+      "subnet-078ea177d4efd4efe",
+      "subnet-06c69d4d2a44f3155"
+    ],
+    "privateSubnetNames": [
+      "Private"
+    ],
+    "privateSubnetRouteTableIds": [
+      "rtb-0250ddf85c5b9b998",
+      "rtb-0d0694363b350bb34"
+    ],
+    "publicSubnetIds": [
+      "subnet-068cd07d91d18d165",
+      "subnet-0f1a09f81e2ff0cdf"
+    ],
+    "publicSubnetNames": [
+      "Public"
+    ],
+    "publicSubnetRouteTableIds": [
+      "rtb-06932da1fb2ea30d6",
+      "rtb-0b927fae8358f595a"
+    ]
+  }
+}

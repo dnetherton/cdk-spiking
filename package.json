@@ -11,13 +11,15 @@
     "deploy:code": "./scripts/deploy-code.sh",
     "prestart": "./scripts/build.sh",
     "start": "./scripts/start.sh",
-    "postinstall": "./scripts/postinstall.sh",
+    "postinstall": "./scripts/postinstall.sh || true",
     "test": "tsc",
     "test:watch": "tsc -w",
     "cdk": "cdk",
     "logs": "./scripts/logs.sh"
   },
   "devDependencies": {
+    "@aws-cdk/aws-ecs": "^1.4.0",
+    "@aws-cdk/aws-ecs-patterns": "^1.4.0",
     "@aws-cdk/aws-iam": "^1.4.0",
     "@aws-cdk/aws-lambda": "^1.4.0",
     "@aws-cdk/aws-lambda-event-sources": "^1.4.0",
@@ -52,6 +54,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "knex": "^0.19.1"
   }
 }
