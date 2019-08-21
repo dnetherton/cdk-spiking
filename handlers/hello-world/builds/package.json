@@ -1,8 +1,0 @@
-{
-  "name": "hello-world",
-  "version": "0.1.0",
-  "devDependencies": {},
-  "dependencies": {
-    "async_iter": "^1.1.4"
-  }
-}

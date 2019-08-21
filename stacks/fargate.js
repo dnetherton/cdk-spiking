@@ -8,7 +8,7 @@ export class FargateStack extends cdk.Stack {
   constructor(scope, id, props) {
     super(scope, id, props)
 
-    //const spike = core.fn.importValue('VpcStack.vpcSpike')
+//    const spike = core.fn.importValue('Vpc2Stack.defaultSecurityGroup')
 
     const vpc = ec2.Vpc.fromLookup(this, 'Vpc', { vpcName: 'Vpc2Stack/Vpc2' })
 

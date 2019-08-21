@@ -26,8 +26,6 @@ export async function handler(event) {
     console.log('aaaa')
     const x = await getDataConnectionDetails()
 
-    console.log('bbbb')
-
     const db = knex({
       client: 'mysql',
       connection: {

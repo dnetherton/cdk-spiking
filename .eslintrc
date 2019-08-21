@@ -1,0 +1,7 @@
+{
+  globals: {
+    __dirname: "off",
+    __filename: "off"
+  },
+  "extends": ["eslint-config-stickler"]
+}

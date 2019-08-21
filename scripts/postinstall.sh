@@ -1,12 +1,9 @@
 #!/bin/bash
 
 set -e
-set -x
 
-cd ./handlers/hello-world
-npm install ## TODO: Use docker/amazon linux
-cd ../..
-
-cd ./handlers/goodbye-world
-npm install ## TODO: Use docker/amazon linux
-cd ../..
+find ./handlers/* -maxdepth 0 -type d | \
+while read f
+do
+    (cd $f && npm install)
+done

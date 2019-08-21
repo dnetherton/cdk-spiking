@@ -1,7 +1,5 @@
-import baseConfig from '../../webpack.base.config.js'
 
 export default {
-  ...baseConfig(__dirname),
   externals: {
     'async_iter/pipeline': 'commonjs async_iter/pipeline',
     'aws-sdk': 'commonjs aws-sdk',

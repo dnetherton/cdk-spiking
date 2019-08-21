@@ -1,21 +1,35 @@
 {
   "name": "spike2",
   "version": "0.1.0",
-  "bin": {
-    "spike2": "bin/spike2.js"
+  "bin": {},
+  "watch": {
+    "build": {
+      "patterns": [
+        "handlers"
+      ],
+      "extensions": "js",
+      "quiet": true,
+      "legacyWatch": false,
+      "delay": 1000,
+      "runOnChangeOnly": false,
+      "inherit": true
+    }
   },
   "scripts": {
+    "watch": "./scripts/build.sh --watch",
     "build": "./scripts/build.sh",
     "package": "./scripts/package.sh",
     "deploy": "./scripts/deploy.sh",
-    "deploy:code": "./scripts/deploy-code.sh",
-    "prestart": "./scripts/build.sh",
+    "deploy:code:only": "./scripts/deploy-code-only.sh",
     "start": "./scripts/start.sh",
+    "start:local:db": "./scripts/start-local-db.sh",
     "postinstall": "./scripts/postinstall.sh || true",
     "test": "tsc",
     "test:watch": "tsc -w",
     "cdk": "cdk",
-    "logs": "./scripts/logs.sh"
+    "logs": "./scripts/logs.sh",
+    "lint": "eslint --fix handlers stacks index.js",
+    "lint:nofix": "eslint ."
   },
   "devDependencies": {
     "@aws-cdk/aws-ecs": "^1.4.0",
@@ -51,7 +65,14 @@
     "mysql2": "^1.6.5",
     "terser-webpack-plugin": "^1.3.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-config-stickler": "^1.0.5",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-no-only-tests": "^2.3.1",
+    "eslint-plugin-node": "^8.0.1"
   },
   "dependencies": {
     "express": "^4.17.1",
