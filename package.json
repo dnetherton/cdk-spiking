@@ -58,7 +58,7 @@
     "@babel/plugin-transform-strict-mode": "^7.2.0",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.5.5",
-    "aws-cdk": "^1.4.0",
+    "aws-cdk": "^1.174.0",
     "babel-eslint": "^11.0.0-beta.0",
     "babel-loader": "^8.0.6",
     "cdk": "^1.4.0",
